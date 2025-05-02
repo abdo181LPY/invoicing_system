@@ -1,0 +1,427 @@
+/**
+ * ملف أنماط لوحة التحكم
+ * يحتوي على الأنماط الخاصة بلوحة التحكم والقائمة الجانبية
+ */
+
+/**
+ * التصميم العام للوحة التحكم
+ */
+.dashboard-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+main {
+    position: relative;
+    min-height: calc(100vh - 56px);
+    padding-bottom: 60px; /* مساحة لتذييل الصفحة */
+}
+
+.dashboard-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #343a40;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-title i {
+    margin-left: 0.5rem;
+    color: #0d6efd;
+}
+
+/**
+ * القائمة الجانبية
+ */
+.sidebar {
+    position: fixed;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    width: 250px;
+    z-index: 1000;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #343a40;
+    padding: 0.75rem 1rem;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    margin-left: 0.75rem;
+    width: 1.25rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.sidebar .nav-link:hover {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.sidebar .nav-link.active {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.sidebar .nav-link .badge {
+    margin-right: auto;
+}
+
+.sidebar-heading {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #6c757d;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.sidebar.collapse {
+    display: none;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1050;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    display: none;
+}
+
+/**
+ * القائمة الجانبية المطوية
+ */
+body.sidebar-collapsed .sidebar {
+    width: 60px;
+}
+
+body.sidebar-collapsed .sidebar .nav-link {
+    padding: 0.5rem 0;
+    text-align: center;
+    justify-content: center;
+}
+
+body.sidebar-collapsed .sidebar .nav-link i {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1.25rem;
+}
+
+body.sidebar-collapsed .sidebar .nav-link span,
+body.sidebar-collapsed .sidebar .sidebar-heading,
+body.sidebar-collapsed .sidebar .nav-link .badge {
+    display: none;
+}
+
+body.sidebar-collapsed main {
+    margin-right: 60px;
+}
+
+/**
+ * المحتوى الرئيسي
+ */
+.content-container {
+    margin-right: 250px;
+    transition: margin 0.3s;
+}
+
+body.sidebar-collapsed .content-container {
+    margin-right: 60px;
+}
+
+/**
+ * بطاقات الإحصائيات
+ */
+.stats-card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.stats-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.stats-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.stats-card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #343a40;
+}
+
+/**
+ * الرسوم البيانية
+ */
+.chart-container {
+    position: relative;
+    margin: 0 auto;
+    height: 300px;
+    width: 100%;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.chart-legend-item {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.chart-legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-left: 0.5rem;
+}
+
+/**
+ * جدول النتائج
+ */
+.result-table th {
+    white-space: nowrap;
+}
+
+.result-table .action-buttons .btn {
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+}
+
+.result-table .action-buttons .btn i {
+    font-size: 0.875rem;
+}
+
+/**
+ * حالة الطلبات
+ */
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+.order-status-progress {
+    height: 30px;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.order-status-progress .progress-bar {
+    text-align: center;
+    font-weight: 500;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: width 0.6s ease;
+}
+
+.order-status-legend {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.order-status-legend-item {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.order-status-legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-left: 0.5rem;
+}
+
+/**
+ * متابعة حالة الطلب
+ */
+.order-tracking {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.order-tracking-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.order-tracking-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.order-tracking-icon.active {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+
+.order-tracking-icon.completed {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.order-tracking-content {
+    margin-right: 1rem;
+    flex: 1;
+}
+
+.order-tracking-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.order-tracking-date {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.order-tracking-description {
+    font-size: 0.875rem;
+    color: #212529;
+}
+
+.order-tracking-line {
+    position: absolute;
+    right: 1.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #dee2e6;
+    z-index: 0;
+}
+
+/**
+ * التكيّف مع أحجام الشاشة
+ */
+@media (max-width: 991.98px) {
+    .sidebar {
+        width: 60px;
+    }
+    
+    .sidebar .nav-link {
+        padding: 0.5rem 0;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .sidebar .nav-link i {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 1.25rem;
+    }
+    
+    .sidebar .nav-link span,
+    .sidebar .sidebar-heading,
+    .sidebar .nav-link .badge {
+        display: none;
+    }
+    
+    .content-container {
+        margin-right: 60px;
+    }
+    
+    .sidebar-toggle {
+        display: block;
+    }
+    
+    body.sidebar-expanded .sidebar {
+        width: 250px;
+    }
+    
+    body.sidebar-expanded .sidebar .nav-link {
+        padding: 0.75rem 1rem;
+        text-align: right;
+        justify-content: flex-start;
+    }
+    
+    body.sidebar-expanded .sidebar .nav-link i {
+        margin-left: 0.75rem;
+        font-size: 1rem;
+    }
+    
+    body.sidebar-expanded .sidebar .nav-link span,
+    body.sidebar-expanded .sidebar .sidebar-heading,
+    body.sidebar-expanded .sidebar .nav-link .badge {
+        display: block;
+    }
+    
+    body.sidebar-expanded .content-container {
+        margin-right: 250px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        margin-right: -60px;
+    }
+    
+    body.sidebar-expanded .sidebar {
+        margin-right: 0;
+    }
+    
+    .content-container {
+        margin-right: 0;
+    }
+    
+    body.sidebar-expanded .content-container {
+        margin-right: 0;
+    }
+}

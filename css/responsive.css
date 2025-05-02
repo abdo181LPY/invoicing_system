@@ -1,0 +1,424 @@
+/**
+ * ملف الأنماط المتجاوبة
+ * يحتوي على الأنماط الخاصة بالتكيف مع أحجام الشاشات المختلفة
+ */
+
+/**
+ * الشاشات الكبيرة (أكبر من 1200px)
+ */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    .sidebar {
+        width: 280px;
+    }
+    
+    .content-container {
+        margin-right: 280px;
+    }
+    
+    body.sidebar-collapsed .sidebar {
+        width: 70px;
+    }
+    
+    body.sidebar-collapsed .content-container {
+        margin-right: 70px;
+    }
+}
+
+/**
+ * الشاشات المتوسطة (بين 992px و 1199px)
+ */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .sidebar {
+        width: 250px;
+    }
+    
+    .content-container {
+        margin-right: 250px;
+    }
+    
+    body.sidebar-collapsed .sidebar {
+        width: 60px;
+    }
+    
+    body.sidebar-collapsed .content-container {
+        margin-right: 60px;
+    }
+}
+
+/**
+ * الشاشات الصغيرة (بين 768px و 991px)
+ */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    /* تغييرات القائمة الجانبية للشاشات الصغيرة */
+    .sidebar {
+        width: 60px;
+    }
+    
+    .sidebar .nav-link {
+        padding: 0.5rem 0;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .sidebar .nav-link i {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 1.25rem;
+    }
+    
+    .sidebar .nav-link span,
+    .sidebar .sidebar-heading,
+    .sidebar .nav-link .badge {
+        display: none;
+    }
+    
+    .content-container {
+        margin-right: 60px;
+    }
+    
+    /* زر تبديل القائمة الجانبية */
+    .sidebar-toggle {
+        display: block;
+    }
+    
+    /* حالة القائمة الجانبية الموسعة */
+    body.sidebar-expanded .sidebar {
+        width: 250px;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        z-index: 1050;
+    }
+    
+    body.sidebar-expanded .sidebar .nav-link {
+        padding: 0.75rem 1rem;
+        text-align: right;
+        justify-content: flex-start;
+    }
+    
+    body.sidebar-expanded .sidebar .nav-link i {
+        margin-left: 0.75rem;
+        font-size: 1rem;
+    }
+    
+    body.sidebar-expanded .sidebar .nav-link span,
+    body.sidebar-expanded .sidebar .sidebar-heading,
+    body.sidebar-expanded .sidebar .nav-link .badge {
+        display: block;
+    }
+}
+
+/**
+ * الشاشات الصغيرة جداً (أقل من 768px)
+ */
+@media (max-width: 767px) {
+    .container {
+        max-width: 100%;
+    }
+    
+    /* حالة القائمة الجانبية في الشاشات الصغيرة جداً */
+    .sidebar {
+        margin-right: -100%;
+        width: 250px;
+        z-index: 1050;
+        box-shadow: none;
+    }
+    
+    .content-container {
+        margin-right: 0;
+    }
+    
+    body.sidebar-expanded .sidebar {
+        margin-right: 0;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    
+    body.sidebar-expanded::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+    }
+    
+    /* زر تبديل القائمة الجانبية */
+    .sidebar-toggle {
+        display: block;
+        left: 1rem;
+        right: auto;
+    }
+    
+    /* تعديلات في لوحة التحكم */
+    .dashboard-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stats-card {
+        margin-bottom: 1rem;
+    }
+    
+    .stats-card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stats-card-value {
+        font-size: 1.5rem;
+    }
+    
+    /* تعديلات الجداول */
+    .table-responsive {
+        border: 0;
+    }
+    
+    .table th,
+    .table td {
+        white-space: nowrap;
+    }
+    
+    /* تعديلات النماذج */
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .card-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    /* تعديلات الإشعارات */
+    .notifications-dropdown {
+        width: 280px;
+    }
+}
+
+/**
+ * الشاشات الصغيرة جداً (أقل من 576px)
+ */
+@media (max-width: 575px) {
+    body {
+        font-size: 0.9rem;
+    }
+    
+    .container-fluid {
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    .btn {
+        padding: 0.375rem 0.75rem;
+    }
+    
+    h1, .h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2, .h2 {
+        font-size: 1.5rem;
+    }
+    
+    .dashboard-title {
+        font-size: 1.25rem;
+    }
+    
+    /* تكيف الجداول في الشاشات الصغيرة جداً */
+    .table-responsive-sm {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* تكيف الأزرار في الشاشات الصغيرة جداً */
+    .btn-group-sm > .btn, .btn-sm {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    
+    /* تكيف حجم الأيقونات */
+    .btn i {
+        font-size: 0.85rem;
+    }
+    
+    /* تكيف البطاقات والإحصائيات */
+    .card-deck {
+        display: block;
+    }
+    
+    .card-deck .card {
+        margin-bottom: 1rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+    }
+    
+    /* تكيف النماذج */
+    .form-label {
+        font-size: 0.9rem;
+    }
+    
+    /* تصغير حجم الخط في الجداول */
+    .table {
+        font-size: 0.85rem;
+    }
+    
+    .table th, .table td {
+        padding: 0.5rem;
+    }
+    
+    /* تصغير حجم الخط في التنبيهات */
+    .alert {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    /* تعديل مربع الحوار */
+    .modal-header {
+        padding: 0.75rem;
+    }
+    
+    .modal-body {
+        padding: 0.75rem;
+    }
+    
+    .modal-footer {
+        padding: 0.5rem;
+    }
+    
+    .modal-title {
+        font-size: 1.1rem;
+    }
+}
+
+/**
+ * وضع الطباعة
+ */
+@media print {
+    body {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .sidebar,
+    .sidebar-toggle,
+    .navbar,
+    .footer {
+        display: none !important;
+    }
+    
+    .content-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+    
+    .container,
+    .container-fluid {
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .print-no-break {
+        page-break-inside: avoid;
+    }
+    
+    .print-break-before {
+        page-break-before: always;
+    }
+    
+    .print-break-after {
+        page-break-after: always;
+    }
+    
+    .print-hidden {
+        display: none !important;
+    }
+    
+    .print-visible {
+        display: block !important;
+    }
+    
+    .card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+}
+
+/**
+ * دعم الاتجاهات (RTL/LTR)
+ */
+html[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+}
+
+html[dir="ltr"] .sidebar {
+    right: auto;
+    left: 0;
+    border-left: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+html[dir="ltr"] .content-container {
+    margin-right: 0;
+    margin-left: 250px;
+}
+
+html[dir="ltr"] body.sidebar-collapsed .content-container {
+    margin-left: 60px;
+}
+
+html[dir="ltr"] .sidebar .nav-link i {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+html[dir="ltr"] .mr-auto {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+html[dir="ltr"] .ml-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+@media (max-width: 767px) {
+    html[dir="ltr"] .sidebar {
+        margin-right: 0;
+        margin-left: -100%;
+    }
+    
+    html[dir="ltr"] body.sidebar-expanded .sidebar {
+        margin-left: 0;
+    }
+    
+    html[dir="ltr"] .sidebar-toggle {
+        left: auto;
+        right: 1rem;
+    }
+}
